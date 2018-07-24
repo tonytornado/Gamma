@@ -4,12 +4,13 @@ from django.contrib.auth.views import login, logout
 from django.urls import reverse_lazy
 from django.views import generic
 
+from Accounts.models import User
+
 
 class LoginView(generic.FormView):
     form_class = AuthenticationForm
     success_url = reverse_lazy('home')
-
-    # template_name = 'form.html'
+    template_name = 'form.html'
 
     def get_form(self, form_class=None):
         if form_class is None:
@@ -32,3 +33,9 @@ class LogoutView(generic.RedirectView):
 class Register(generic.CreateView):
     form_class = forms.UserCreationForm
     success_url = reverse_lazy('login')
+
+
+class AccountView(generic.DetailView):
+    model = User
+    context_object_name = 'users'
+    template_name = "user_page.html"

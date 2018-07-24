@@ -21,6 +21,6 @@ from Warudo import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('users/', include('Accounts.urls')),
-    path('ZaWarudo/', include('Warudo.urls')),
+    path('usx/', include('Accounts.urls')),
+    path('cos/', include('Warudo.urls')),
 ]

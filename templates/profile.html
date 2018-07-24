@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    About {{ cosplayer.Identity }}
+    About {{ cosplayer.Name }}
 {% endblock %}
 {% block content %}
-    <h1>{{ cosplayer.Identity }}</h1>
-    <small>{{ cosplayer.lvl }}</small>
-    <p>{{ cosplayer.photo }}</p>
-    <p>Conventions attending:</p>
+    <h1>{{ cosplayer.Name }}</h1>
+    <small>{{ cosplayer.Expertise }}</small>
+    <p>{{ cosplayer.CosUrl1 }}</p>
+    {#    <p>Conventions attending:</p>#}
 {% endblock %}

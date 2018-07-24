@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Warudo.apps.WarudoConfig',
-    'Accounts',
+    'Accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
