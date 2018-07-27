@@ -7,7 +7,7 @@
     <div>
         <h3 class="py-3">{{ cosplayers.count }} available</h3>
         {% for cosplayer in cosplayers %}
-            <h3><a href="{% url 'profile' cosplayer.pk %}">{{ cosplayer.Name }}
+            <h3><a href="{% url 'profile' cosplayer.Name %}">{{ cosplayer.Name }}
                 {#                    <img src="{{ MEDIA_ROOT }}{{ cosplayer.CosUrl1 }}">#}
             </a></h3>
         {% endfor %}
