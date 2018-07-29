@@ -1,8 +1,17 @@
 {% extends 'layout.html' %}
+{% load staticfiles %}
 
 {% block title %}
-    <h1>{{ users.display_name }}</h1>
+    Profile for: {{ users.username }}
 {% endblock %}
 {% block content %}
+    <img src="{{ MEDIA_URL }}{{ users.avatar }}" alt="{{ users.display_name }}'s avatar" height="100px">
+    <h4>{{ users.display_name }}</h4>
     <h3>{{ users.email }}</h3>
+
+    <p>{{ users.bio }}</p>
+    {% if users.cosplayer.Name %}
+        <p>a.k.a. {{ users.cosplayer.Name }} from {{ users.address.City }}, {{ users.address.State }}</p>
+        <a href="{% url 'edit' user.pk %}">Edit</a>
+    {% endif %}
 {% endblock %}

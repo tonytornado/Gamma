@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import PermissionsMixin, User
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -38,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=40, unique=True)
     display_name = models.CharField(max_length=140)
     bio = models.TextField(max_length=140, blank=True, default="")
-    avatar = models.ImageField(blank=True, null=True)
+    avatar = models.ImageField(blank=True, null=True, upload_to='pro_img')
     date_joined = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -48,11 +49,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["display_name", "username"]
 
-    def __str__(self):
-        return "@{}".format(self.username)
+    # def __str__(self):
+    #     return "@{}".format(self.username)
+
+    # @models.permalink
+    # def get_absolute_url(self):
+    #     return reverse('user_profile', {'pk': self.pk})
 
     def get_short_name(self):
         return self.display_name
 
     def get_long_name(self):
         return "{} (@{})".format(self.display_name, self.username)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'user-profile', (), {'pk': self.pk}

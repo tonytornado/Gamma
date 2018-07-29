@@ -1,8 +1,13 @@
 from django.contrib import admin
+from Warudo.models import Profile, Cosplayer, Address
 
 # Register your models here.
-from Warudo import models
 
-admin.site.register(models.Profile)
-admin.site.register(models.Cosplayer)
-admin.site.register(models.Address)
+admin.site.register(Profile)
+# admin.site.register(models.Cosplayer)
+admin.site.register(Address)
+
+
+@admin.register(Cosplayer)
+class CosAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("Name",)}

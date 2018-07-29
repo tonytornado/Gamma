@@ -4,6 +4,7 @@ from django.contrib.auth.views import login, logout
 from django.urls import reverse_lazy
 from django.views import generic
 
+import Accounts
 from Accounts.models import User
 
 
@@ -39,3 +40,10 @@ class AccountView(generic.DetailView):
     model = User
     context_object_name = 'users'
     template_name = "user_page.html"
+
+
+class EditView(generic.UpdateView):
+    model = Accounts.models.User
+    fields = ['display_name', 'avatar', 'bio']
+    template_name = 'form.html'
+    success_url = reverse_lazy('user_profile', {'pk': User.pk})
