@@ -1,5 +1,4 @@
 from django.db import models
-from django.template.defaultfilters import lower
 
 from Accounts.models import User
 
@@ -37,7 +36,6 @@ class Cosplayer(models.Model):
     def __str__(self):
         return "%s" % self.Name
 
-    @models.permalink
     def get_absolute_url(self):
         return 'cos-profile', (), {'slug': self.slug}
 
